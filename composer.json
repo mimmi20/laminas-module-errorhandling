@@ -1,6 +1,6 @@
 {
-  "name": "mimmi20/template",
-  "description": "Provides a GitHub repository template for a PHP library, using GitHub actions.",
+  "name": "mimmi20/laminas-module-errorhandling",
+  "description": "Provides a Log Listener for Laminas MVC Applications",
   "license": "MIT",
   "type": "library",
   "authors": [
@@ -11,35 +11,61 @@
     },
     {
       "name": "Contributors",
-      "homepage": "https://github.com/mimmi20/template/graphs/contributors"
+      "homepage": "https://github.com/mimmi20/laminas-module-errorhandling/graphs/contributors"
     }
   ],
-  "homepage": "https://github.com/mimmi20/template",
+  "homepage": "https://github.com/mimmi20/laminas-module-errorhandling",
   "support": {
-    "issues": "https://github.com/mimmi20/template/issues",
-    "source": "https://github.com/mimmi20/template"
+    "issues": "https://github.com/mimmi20/laminas-module-errorhandling/issues",
+    "source": "https://github.com/mimmi20/laminas-module-errorhandling"
   },
   "require": {
     "php": "^8.1.0",
-    "ext-mbstring": "*"
+    "ext-mbstring": "*",
+    "laminas/laminas-log": "^2.15.2",
+    "laminas/laminas-mvc": "^3.3.3"
   },
   "require-dev": {
-    "mimmi20/coding-standard": "^3.0.3",
+    "laminas/laminas-component-installer": "^3.0.1",
+    "laminas/laminas-eventmanager": "^3.5.0",
+    "laminas/laminas-modulemanager": "^2.11.0",
+    "laminas/laminas-servicemanager": "^3.16.0",
+    "mimmi20/coding-standard": "^3.0.4",
     "phpstan/extension-installer": "^1.1.0",
     "phpstan/phpstan": "^1.8.2",
     "phpstan/phpstan-deprecation-rules": "^1.0.0",
     "phpstan/phpstan-phpunit": "^1.1.1",
     "phpunit/phpunit": "^9.5.21"
   },
-  "minimum-stability": "stable",
-  "prefer-stable": true,
+  "suggest": {
+    "laminas/laminas-modulemanager": "Required for Module Integration",
+    "laminas/laminas-servicemanager": "Required for the Factories"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mimmi20\\ErrorHandling\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mimmi20Test\\ErrorHandling\\": "tests/"
+    }
+  },
   "config": {
     "preferred-install": "dist",
     "lock": false,
     "sort-packages": true,
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
+      "laminas/laminas-component-installer": true,
       "phpstan/extension-installer": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "extra": {
+    "laminas": {
+      "component": "Mimmi20\\ErrorHandling"
     }
   }
 }
