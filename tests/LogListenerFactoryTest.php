@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 namespace Mimmi20Test\ErrorHandling;
 
+use AssertionError;
 use Laminas\Log\Logger;
 use Mimmi20\ErrorHandling\LogListener;
 use Mimmi20\ErrorHandling\LogListenerFactory;
@@ -53,5 +54,28 @@ final class LogListenerFactoryTest extends TestCase
         $result = $this->object->__invoke($container, '');
 
         self::assertInstanceOf(LogListener::class, $result);
+    }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function testInvoke2(): void
+    {
+        $container = $this->getMockBuilder(ContainerInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $container->expects(self::once())
+            ->method('get')
+            ->with(Logger::class)
+            ->willReturn(null);
+        $container->expects(self::never())
+            ->method('has');
+
+        $this->expectException(AssertionError::class);
+        $this->expectExceptionCode(1);
+        $this->expectExceptionMessage('assert($logger instanceof Logger)');
+
+        $this->object->__invoke($container, '');
     }
 }

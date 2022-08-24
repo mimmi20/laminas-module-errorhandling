@@ -72,6 +72,46 @@ final class LogListenerTest extends TestCase
      * @throws InvalidArgumentException
      * @throws \PHPUnit\Framework\Exception
      */
+    public function testAttach2(): void
+    {
+        $priority = 1;
+
+        $logger = $this->getMockBuilder(Logger::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $logger->expects(self::never())
+            ->method('err');
+
+        $logListener = new LogListener($logger);
+
+        $eventManager = $this->getMockBuilder(EventManagerInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $eventManager->expects(self::exactly(2))
+            ->method('attach')
+            ->withConsecutive(
+                [
+                    MvcEvent::EVENT_DISPATCH_ERROR,
+                    [$logListener, 'log'],
+                    $priority,
+                ],
+                [
+                    MvcEvent::EVENT_RENDER_ERROR,
+                    [$logListener, 'log'],
+                    $priority,
+                ]
+            );
+
+        $logListener->attach($eventManager);
+    }
+
+    /**
+     * @throws MethodNameAlreadyConfiguredException
+     * @throws MethodCannotBeConfiguredException
+     * @throws IncompatibleReturnValueException
+     * @throws InvalidArgumentException
+     * @throws \PHPUnit\Framework\Exception
+     */
     public function testLog(): void
     {
         $logger = $this->getMockBuilder(Logger::class)
