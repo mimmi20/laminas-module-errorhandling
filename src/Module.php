@@ -1,10 +1,20 @@
 <?php
+/**
+ * This file is part of the mimmi20/laminas-module-errorhandling package.
+ *
+ * Copyright (c) 2020-2021, Thomas Mueller <mimmi20@live.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+declare(strict_types = 1);
 
 namespace Mimmi20\ErrorHandling;
 
 use Laminas\EventManager\EventInterface;
 use Laminas\EventManager\EventManagerInterface;
+use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\ModuleManager\Feature\BootstrapListenerInterface;
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\ModuleManager\Feature\DependencyIndicatorInterface;
@@ -17,7 +27,7 @@ use Psr\Container\NotFoundExceptionInterface;
 
 use function assert;
 
-class Module implements BootstrapListenerInterface, ConfigProviderInterface, DependencyIndicatorInterface, ServiceProviderInterface
+final class Module implements BootstrapListenerInterface, ConfigProviderInterface, DependencyIndicatorInterface, ServiceProviderInterface
 {
     /**
      * @return string[][][]
@@ -33,6 +43,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Dep
     /**
      * @return string[][]
      * @phpstan-return array{factories: array<class-string, class-string>}
+     *
      * @throws void
      */
     public function getServiceConfig(): array
@@ -48,14 +59,13 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Dep
      */
     public function onBootstrap(EventInterface $e): void
     {
-        if (! $e instanceof MvcEvent) {
+        if (!$e instanceof MvcEvent) {
             return;
         }
 
         $application = $e->getApplication();
         assert($application instanceof ApplicationInterface);
 
-        // add listeners
         $eventManager = $application->getEventManager();
         assert($eventManager instanceof EventManagerInterface);
 
@@ -64,7 +74,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Dep
         assert($serviceManager instanceof ServiceLocatorInterface);
 
         $logListener = $serviceManager->get(LogListener::class);
-        assert($logListener instanceof LogListener);
+        assert($logListener instanceof ListenerAggregateInterface);
 
         $logListener->attach($eventManager, -2000);
     }

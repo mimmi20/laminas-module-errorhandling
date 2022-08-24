@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * This file is part of the mimmi20/laminas-module-errorhandling package.
+ *
+ * Copyright (c) 2020-2021, Thomas Mueller <mimmi20@live.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 declare(strict_types = 1);
 
@@ -16,7 +23,7 @@ use function assert;
 /**
  * a listener to log errors
  */
-class LogListener extends AbstractListenerAggregate
+final class LogListener extends AbstractListenerAggregate
 {
     private Logger $logger;
 
@@ -56,11 +63,12 @@ class LogListener extends AbstractListenerAggregate
      */
     public function log(MvcEvent $e): void
     {
-        if (null === $e->getParam('exception')) {
+        $exception = $e->getParam('exception');
+
+        if (null === $exception) {
             return;
         }
 
-        $exception = $e->getParam('exception');
         assert($exception instanceof Throwable);
 
         $this->logger->err(

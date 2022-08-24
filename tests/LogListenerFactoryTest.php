@@ -1,5 +1,14 @@
 <?php
+/**
+ * This file is part of the mimmi20/laminas-module-errorhandling package.
+ *
+ * Copyright (c) 2020-2021, Thomas Mueller <mimmi20@live.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+declare(strict_types = 1);
 
 namespace Mimmi20Test\ErrorHandling;
 
@@ -11,7 +20,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
-class LogListenerFactoryTest extends TestCase
+final class LogListenerFactoryTest extends TestCase
 {
     private LogListenerFactory $object;
 
@@ -34,15 +43,15 @@ class LogListenerFactoryTest extends TestCase
         $container = $this->getMockBuilder(ContainerInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $container->expects(static::once())
+        $container->expects(self::once())
             ->method('get')
             ->with(Logger::class)
             ->willReturn($logger);
-        $container->expects(static::never())
+        $container->expects(self::never())
             ->method('has');
 
         $result = $this->object->__invoke($container, '');
 
-        static::assertInstanceOf(LogListener::class, $result);
+        self::assertInstanceOf(LogListener::class, $result);
     }
 }
