@@ -455,7 +455,7 @@ jobs:
         with:
           php-version: "${{ matrix.php-version }}"
           extensions: "${{ env.PHP_EXTENSIONS }}"
-          ini-values: "${{ env.PHP_INI_VALUES }}"
+          ini-values: "${{ env.PHP_INI_VALUES }}, xdebug.mode=coverage"
           coverage: "${{ matrix.coverage-drivers }}"
           tools: "${{ env.TOOLS }}, infection"
 
