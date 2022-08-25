@@ -18,8 +18,6 @@ use Laminas\Log\Logger;
 use Laminas\Mvc\MvcEvent;
 use Throwable;
 
-use function assert;
-
 /**
  * a listener to log errors
  */
