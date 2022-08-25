@@ -59,9 +59,6 @@ final class LogListener extends AbstractListenerAggregate
             return;
         }
 
-        $this->logger->err(
-            $exception->getMessage(),
-            ['Exception' => $exception]
-        );
+        $this->logger->err($exception->getMessage(), ['Exception' => $exception]);
     }
 }
