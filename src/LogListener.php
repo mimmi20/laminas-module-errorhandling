@@ -65,11 +65,9 @@ final class LogListener extends AbstractListenerAggregate
     {
         $exception = $e->getParam('exception');
 
-        if (null === $exception) {
+        if (!$exception instanceof Throwable) {
             return;
         }
-
-        assert($exception instanceof Throwable);
 
         $this->logger->err(
             $exception->getMessage(),
