@@ -25,9 +25,7 @@ final class LogListenerFactoryTest extends TestCase
 {
     private LogListenerFactory $object;
 
-    /**
-     * @throws void
-     */
+    /** @throws void */
     protected function setUp(): void
     {
         $this->object = new LogListenerFactory();

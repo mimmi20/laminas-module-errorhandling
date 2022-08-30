@@ -23,14 +23,9 @@ use Throwable;
  */
 final class LogListener extends AbstractListenerAggregate
 {
-    private Logger $logger;
-
-    /**
-     * @throws void
-     */
-    public function __construct(Logger $logger)
+    /** @throws void */
+    public function __construct(private Logger $logger)
     {
-        $this->logger = $logger;
     }
 
     /**
