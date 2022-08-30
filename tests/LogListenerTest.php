@@ -59,7 +59,7 @@ final class LogListenerTest extends TestCase
                     MvcEvent::EVENT_RENDER_ERROR,
                     [$logListener, 'log'],
                     $priority,
-                ]
+                ],
             );
 
         $logListener->attach($eventManager, $priority);
@@ -99,7 +99,7 @@ final class LogListenerTest extends TestCase
                     MvcEvent::EVENT_RENDER_ERROR,
                     [$logListener, 'log'],
                     $priority,
-                ]
+                ],
             );
 
         $logListener->attach($eventManager);
