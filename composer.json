@@ -26,6 +26,11 @@
     "laminas/laminas-mvc": "^3.3.5"
   },
   "require-dev": {
+    "ext-dom": "*",
+    "ext-simplexml": "*",
+    "ext-tokenizer": "*",
+    "ext-xml": "*",
+    "ext-xmlwriter": "*",
     "laminas/laminas-component-installer": "^3.0.1",
     "laminas/laminas-eventmanager": "^3.5.0",
     "laminas/laminas-modulemanager": "^2.12.0",
