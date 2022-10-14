@@ -24,8 +24,9 @@ use Throwable;
 final class LogListener extends AbstractListenerAggregate
 {
     /** @throws void */
-    public function __construct(private Logger $logger)
+    public function __construct(private readonly Logger $logger)
     {
+        // nothing to do here
     }
 
     /**
