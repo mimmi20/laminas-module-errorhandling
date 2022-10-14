@@ -52,8 +52,6 @@ final class Module implements BootstrapListenerInterface, ConfigProviderInterfac
     }
 
     /**
-     * @param EventInterface|MvcEvent $e
-     *
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
