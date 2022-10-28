@@ -33,7 +33,7 @@
     "ext-xmlwriter": "*",
     "laminas/laminas-component-installer": "^3.0.1",
     "laminas/laminas-eventmanager": "^3.6.0",
-    "laminas/laminas-modulemanager": "^2.13.0",
+    "laminas/laminas-modulemanager": "^2.14.0",
     "laminas/laminas-servicemanager": "^3.19.0",
     "mimmi20/coding-standard": "^3.0.17",
     "phpstan/extension-installer": "^1.2.0",
