@@ -14,7 +14,6 @@ namespace Mimmi20Test\ErrorHandling;
 
 use Exception;
 use Laminas\EventManager\EventManagerInterface;
-use Laminas\Log\Logger;
 use Laminas\Mvc\MvcEvent;
 use Mimmi20\ErrorHandling\LogListener;
 use PHPUnit\Framework\InvalidArgumentException;
@@ -22,6 +21,7 @@ use PHPUnit\Framework\MockObject\IncompatibleReturnValueException;
 use PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException;
 use PHPUnit\Framework\MockObject\MethodNameAlreadyConfiguredException;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
 final class LogListenerTest extends TestCase
 {
@@ -36,11 +36,11 @@ final class LogListenerTest extends TestCase
     {
         $priority = 4711;
 
-        $logger = $this->getMockBuilder(Logger::class)
+        $logger = $this->getMockBuilder(LoggerInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $logger->expects(self::never())
-            ->method('err');
+            ->method('error');
 
         $logListener = new LogListener($logger);
 
@@ -76,11 +76,11 @@ final class LogListenerTest extends TestCase
     {
         $priority = 1;
 
-        $logger = $this->getMockBuilder(Logger::class)
+        $logger = $this->getMockBuilder(LoggerInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $logger->expects(self::never())
-            ->method('err');
+            ->method('error');
 
         $logListener = new LogListener($logger);
 
@@ -114,11 +114,11 @@ final class LogListenerTest extends TestCase
      */
     public function testLog(): void
     {
-        $logger = $this->getMockBuilder(Logger::class)
+        $logger = $this->getMockBuilder(LoggerInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $logger->expects(self::never())
-            ->method('err');
+            ->method('error');
 
         $logListener = new LogListener($logger);
 
@@ -149,12 +149,12 @@ final class LogListenerTest extends TestCase
         $message   = 'test-error-message';
         $exception = new Exception($message);
 
-        $logger = $this->getMockBuilder(Logger::class)
+        $logger = $this->getMockBuilder(LoggerInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $logger->expects(self::once())
-            ->method('err')
-            ->with($message, ['Exception' => $exception]);
+            ->method('error')
+            ->with($exception);
 
         $logListener = new LogListener($logger);
 

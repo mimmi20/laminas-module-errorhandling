@@ -17,7 +17,6 @@ use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\ModuleManager\Feature\BootstrapListenerInterface;
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
-use Laminas\ModuleManager\Feature\DependencyIndicatorInterface;
 use Laminas\ModuleManager\Feature\ServiceProviderInterface;
 use Laminas\Mvc\ApplicationInterface;
 use Laminas\Mvc\MvcEvent;
@@ -27,7 +26,7 @@ use Psr\Container\NotFoundExceptionInterface;
 
 use function assert;
 
-final class Module implements BootstrapListenerInterface, ConfigProviderInterface, DependencyIndicatorInterface, ServiceProviderInterface
+final class Module implements BootstrapListenerInterface, ConfigProviderInterface, ServiceProviderInterface
 {
     /**
      * @return string[][][]
@@ -75,17 +74,5 @@ final class Module implements BootstrapListenerInterface, ConfigProviderInterfac
         assert($logListener instanceof ListenerAggregateInterface);
 
         $logListener->attach($eventManager, -2000);
-    }
-
-    /**
-     * Expected to return an array of modules on which the current one depends on
-     *
-     * @return array<int, string>
-     *
-     * @throws void
-     */
-    public function getModuleDependencies(): array
-    {
-        return ['Laminas\Log'];
     }
 }

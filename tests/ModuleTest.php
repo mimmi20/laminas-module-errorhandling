@@ -70,21 +70,6 @@ final class ModuleTest extends TestCase
     }
 
     /**
-     * @throws InvalidArgumentException
-     * @throws Exception
-     */
-    public function testGetModuleDependencies(): void
-    {
-        $object = new Module();
-        $config = $object->getModuleDependencies();
-
-        self::assertIsArray($config);
-        self::assertCount(1, $config);
-        self::assertArrayHasKey(0, $config);
-        self::assertContains('Laminas\Log', $config);
-    }
-
-    /**
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */

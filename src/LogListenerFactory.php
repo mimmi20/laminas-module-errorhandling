@@ -12,11 +12,11 @@ declare(strict_types = 1);
 
 namespace Mimmi20\ErrorHandling;
 
-use Laminas\Log\Logger;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use Psr\Log\LoggerInterface;
 
 use function assert;
 
@@ -38,8 +38,8 @@ final class LogListenerFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array | null $options = null): LogListener
     {
-        $logger = $container->get(Logger::class);
-        assert($logger instanceof Logger);
+        $logger = $container->get(LoggerInterface::class);
+        assert($logger instanceof LoggerInterface);
 
         return new LogListener($logger);
     }

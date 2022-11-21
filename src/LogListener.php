@@ -14,8 +14,8 @@ namespace Mimmi20\ErrorHandling;
 
 use Laminas\EventManager\AbstractListenerAggregate;
 use Laminas\EventManager\EventManagerInterface;
-use Laminas\Log\Logger;
 use Laminas\Mvc\MvcEvent;
+use Psr\Log\LoggerInterface;
 use Throwable;
 
 /**
@@ -24,7 +24,7 @@ use Throwable;
 final class LogListener extends AbstractListenerAggregate
 {
     /** @throws void */
-    public function __construct(private readonly Logger $logger)
+    public function __construct(private readonly LoggerInterface $logger)
     {
         // nothing to do here
     }
@@ -55,6 +55,6 @@ final class LogListener extends AbstractListenerAggregate
             return;
         }
 
-        $this->logger->err($exception->getMessage(), ['Exception' => $exception]);
+        $this->logger->error($exception);
     }
 }
