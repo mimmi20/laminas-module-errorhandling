@@ -16,8 +16,8 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
-
 use Psr\Log\LoggerInterface;
+
 use function assert;
 
 /**
