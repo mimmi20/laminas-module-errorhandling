@@ -49,16 +49,10 @@ final class LogListenerTest extends TestCase
             ->getMock();
         $eventManager->expects(self::exactly(2))
             ->method('attach')
-            ->withConsecutive(
+            ->willReturnMap(
                 [
-                    MvcEvent::EVENT_DISPATCH_ERROR,
-                    [$logListener, 'log'],
-                    $priority,
-                ],
-                [
-                    MvcEvent::EVENT_RENDER_ERROR,
-                    [$logListener, 'log'],
-                    $priority,
+                    [MvcEvent::EVENT_DISPATCH_ERROR, [$logListener, 'log'], $priority],
+                    [MvcEvent::EVENT_RENDER_ERROR, [$logListener, 'log'], $priority],
                 ],
             );
 
@@ -89,16 +83,10 @@ final class LogListenerTest extends TestCase
             ->getMock();
         $eventManager->expects(self::exactly(2))
             ->method('attach')
-            ->withConsecutive(
+            ->willReturnMap(
                 [
-                    MvcEvent::EVENT_DISPATCH_ERROR,
-                    [$logListener, 'log'],
-                    $priority,
-                ],
-                [
-                    MvcEvent::EVENT_RENDER_ERROR,
-                    [$logListener, 'log'],
-                    $priority,
+                    [MvcEvent::EVENT_DISPATCH_ERROR, [$logListener, 'log'], $priority],
+                    [MvcEvent::EVENT_RENDER_ERROR, [$logListener, 'log'], $priority],
                 ],
             );
 
