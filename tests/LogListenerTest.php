@@ -16,6 +16,7 @@ use Exception;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\Mvc\MvcEvent;
 use Mimmi20\ErrorHandling\LogListener;
+use PHPUnit\Framework\Constraint\IsType;
 use PHPUnit\Framework\InvalidArgumentException;
 use PHPUnit\Framework\MockObject\IncompatibleReturnValueException;
 use PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException;
@@ -44,6 +45,8 @@ final class LogListenerTest extends TestCase
 
         $logListener = new LogListener($logger);
 
+        $callback = [$logListener, 'log'];
+
         $eventManager = $this->getMockBuilder(EventManagerInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -51,8 +54,8 @@ final class LogListenerTest extends TestCase
             ->method('attach')
             ->willReturnMap(
                 [
-                    [MvcEvent::EVENT_DISPATCH_ERROR, [$logListener, 'log'], $priority],
-                    [MvcEvent::EVENT_RENDER_ERROR, [$logListener, 'log'], $priority],
+                    [MvcEvent::EVENT_DISPATCH_ERROR, $callback, $priority, new IsType(IsType::TYPE_CALLABLE)],
+                    [MvcEvent::EVENT_RENDER_ERROR, $callback, $priority, new IsType(IsType::TYPE_CALLABLE)],
                 ],
             );
 
@@ -78,6 +81,8 @@ final class LogListenerTest extends TestCase
 
         $logListener = new LogListener($logger);
 
+        $callback = [$logListener, 'log'];
+
         $eventManager = $this->getMockBuilder(EventManagerInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -85,8 +90,8 @@ final class LogListenerTest extends TestCase
             ->method('attach')
             ->willReturnMap(
                 [
-                    [MvcEvent::EVENT_DISPATCH_ERROR, [$logListener, 'log'], $priority],
-                    [MvcEvent::EVENT_RENDER_ERROR, [$logListener, 'log'], $priority],
+                    [MvcEvent::EVENT_DISPATCH_ERROR, $callback, $priority, new IsType(IsType::TYPE_CALLABLE)],
+                    [MvcEvent::EVENT_RENDER_ERROR, $callback, $priority, new IsType(IsType::TYPE_CALLABLE)],
                 ],
             );
 
