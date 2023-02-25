@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/laminas-module-errorhandling package.
  *
- * Copyright (c) 2020-2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2020-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,7 +29,7 @@ use function assert;
 final class Module implements BootstrapListenerInterface, ConfigProviderInterface, ServiceProviderInterface
 {
     /**
-     * @return string[][][]
+     * @return array<array<array<string>>>
      * @phpstan-return array{service_manager: array{factories: array<class-string, class-string>}}
      *
      * @throws void
@@ -40,7 +40,7 @@ final class Module implements BootstrapListenerInterface, ConfigProviderInterfac
     }
 
     /**
-     * @return string[][]
+     * @return array<array<string>>
      * @phpstan-return array{factories: array<class-string, class-string>}
      *
      * @throws void
