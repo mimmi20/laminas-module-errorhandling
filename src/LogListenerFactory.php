@@ -36,11 +36,8 @@ final class LogListenerFactory implements FactoryInterface
      * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
-    public function __invoke(
-        ContainerInterface $container,
-        $requestedName,
-        array | null $options = null,
-    ): LogListener {
+    public function __invoke(ContainerInterface $container, $requestedName, array | null $options = null): LogListener
+    {
         $logger = $container->get(LoggerInterface::class);
         assert($logger instanceof LoggerInterface);
 
