@@ -26,6 +26,7 @@
     "laminas/laminas-mvc": "^3.6.1"
   },
   "require-dev": {
+    "ext-ctype": "*",
     "ext-dom": "*",
     "ext-simplexml": "*",
     "ext-tokenizer": "*",
@@ -36,13 +37,14 @@
     "laminas/laminas-eventmanager": "^3.10.0",
     "laminas/laminas-modulemanager": "^2.14.0",
     "laminas/laminas-servicemanager": "^3.20.0",
-    "mimmi20/coding-standard": "^4.0.5",
+    "mimmi20/coding-standard": "^5.0.0",
     "nikic/php-parser": "^v4.15.4",
     "phpstan/extension-installer": "^1.3.0",
     "phpstan/phpstan": "^1.10.14",
     "phpstan/phpstan-deprecation-rules": "^1.1.3",
     "phpstan/phpstan-phpunit": "^1.3.11",
-    "phpunit/phpunit": "^10.1.2"
+    "phpunit/phpunit": "^10.1.2",
+    "rector/rector": "^0.15.25"
   },
   "suggest": {
     "laminas/laminas-modulemanager": "Required for Module Integration",

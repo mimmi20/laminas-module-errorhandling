@@ -49,7 +49,7 @@ final class LogListenerFactoryTest extends TestCase
         $container->expects(self::never())
             ->method('has');
 
-        $result = $this->object->__invoke($container, '');
+        $result = ($this->object)($container, '');
 
         self::assertInstanceOf(LogListener::class, $result);
     }
@@ -74,6 +74,6 @@ final class LogListenerFactoryTest extends TestCase
         $this->expectExceptionCode(1);
         $this->expectExceptionMessage('assert($logger instanceof LoggerInterface)');
 
-        $this->object->__invoke($container, '');
+        ($this->object)($container, '');
     }
 }
