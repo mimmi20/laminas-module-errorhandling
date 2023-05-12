@@ -95,5 +95,5 @@ parameters:
       tooWideThrowType: true
 
   ignoreErrors:
-    - '~is not subtype of Throwable~'
+#    - '~is not subtype of Throwable~'
     - '~Call to static method PHPUnit\\Framework\\Assert::assert.*\(\) with .* will always evaluate to true~'
