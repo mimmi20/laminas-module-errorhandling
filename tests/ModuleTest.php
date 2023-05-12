@@ -25,14 +25,10 @@ use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 final class ModuleTest extends TestCase
 {
-    /**
-     * @throws InvalidArgumentException
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function testGetConfig(): void
     {
         $object = new Module();
@@ -51,10 +47,7 @@ final class ModuleTest extends TestCase
         self::assertArrayHasKey(LogListener::class, $config['service_manager']['factories']);
     }
 
-    /**
-     * @throws InvalidArgumentException
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function testGetServiceConfig(): void
     {
         $object = new Module();
