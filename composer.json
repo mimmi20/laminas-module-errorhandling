@@ -33,7 +33,7 @@
     "ext-xml": "*",
     "ext-xmlwriter": "*",
     "infection/infection": "^0.27.0",
-    "laminas/laminas-component-installer": "^3.2.1",
+    "laminas/laminas-component-installer": "^3.3.0",
     "laminas/laminas-eventmanager": "^3.10.0",
     "laminas/laminas-modulemanager": "^2.14.0",
     "laminas/laminas-servicemanager": "^3.21.0",
