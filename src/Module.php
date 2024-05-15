@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 namespace Mimmi20\ErrorHandling;
 
+use ArrayAccess;
 use Laminas\EventManager\EventInterface;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\ListenerAggregateInterface;
@@ -51,6 +52,8 @@ final class Module implements BootstrapListenerInterface, ConfigProviderInterfac
     }
 
     /**
+     * @param EventInterface<object|string|null, array<mixed>|ArrayAccess|object> $e
+     *
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
