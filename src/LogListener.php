@@ -46,6 +46,8 @@ final class LogListener extends AbstractListenerAggregate
      * log mvc errors
      *
      * @throws void
+     *
+     * @api
      */
     public function log(MvcEvent $e): void
     {
