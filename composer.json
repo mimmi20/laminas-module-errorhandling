@@ -69,6 +69,7 @@
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "infection/extension-installer": true,
+      "laminas/laminas-component-installer": false,
       "phpstan/extension-installer": true
     },
     "lock": false,
