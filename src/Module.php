@@ -23,6 +23,7 @@ use Laminas\ModuleManager\Feature\ServiceProviderInterface;
 use Laminas\Mvc\ApplicationInterface;
 use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use Override;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -36,6 +37,7 @@ final class Module implements BootstrapListenerInterface, ConfigProviderInterfac
      *
      * @throws void
      */
+    #[Override]
     public function getConfig(): array
     {
         return ['service_manager' => $this->getServiceConfig()];
@@ -47,6 +49,7 @@ final class Module implements BootstrapListenerInterface, ConfigProviderInterfac
      *
      * @throws void
      */
+    #[Override]
     public function getServiceConfig(): array
     {
         return ['factories' => [LogListener::class => LogListenerFactory::class]];
@@ -58,6 +61,7 @@ final class Module implements BootstrapListenerInterface, ConfigProviderInterfac
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
+    #[Override]
     public function onBootstrap(EventInterface $e): void
     {
         if (!$e instanceof MvcEvent) {
