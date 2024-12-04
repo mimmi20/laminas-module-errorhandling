@@ -14,6 +14,7 @@ declare(strict_types = 1);
 namespace Mimmi20\ErrorHandling;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use Override;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -37,6 +38,7 @@ final class LogListenerFactory implements FactoryInterface
      * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
+    #[Override]
     public function __invoke(ContainerInterface $container, $requestedName, array | null $options = null): LogListener
     {
         $logger = $container->get(LoggerInterface::class);

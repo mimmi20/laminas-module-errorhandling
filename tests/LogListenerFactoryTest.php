@@ -16,6 +16,7 @@ namespace Mimmi20Test\ErrorHandling;
 use AssertionError;
 use Mimmi20\ErrorHandling\LogListener;
 use Mimmi20\ErrorHandling\LogListenerFactory;
+use Override;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -27,6 +28,7 @@ final class LogListenerFactoryTest extends TestCase
     private LogListenerFactory $object;
 
     /** @throws void */
+    #[Override]
     protected function setUp(): void
     {
         $this->object = new LogListenerFactory();
