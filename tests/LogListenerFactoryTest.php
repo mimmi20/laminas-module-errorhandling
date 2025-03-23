@@ -16,7 +16,8 @@ namespace Mimmi20Test\ErrorHandling;
 use AssertionError;
 use Mimmi20\ErrorHandling\LogListener;
 use Mimmi20\ErrorHandling\LogListenerFactory;
-use Override;
+use PHPUnit\Event\NoPreviousThrowableException;
+use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -25,18 +26,12 @@ use Psr\Log\LoggerInterface;
 
 final class LogListenerFactoryTest extends TestCase
 {
-    private LogListenerFactory $object;
-
-    /** @throws void */
-    #[Override]
-    protected function setUp(): void
-    {
-        $this->object = new LogListenerFactory();
-    }
-
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
+     * @throws Exception
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testInvoke(): void
     {
@@ -52,7 +47,7 @@ final class LogListenerFactoryTest extends TestCase
         $container->expects(self::never())
             ->method('has');
 
-        $result = ($this->object)($container, '');
+        $result = (new LogListenerFactory())($container, '');
 
         self::assertInstanceOf(LogListener::class, $result);
     }
@@ -60,6 +55,7 @@ final class LogListenerFactoryTest extends TestCase
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
+     * @throws Exception
      */
     public function testInvoke2(): void
     {
@@ -77,6 +73,6 @@ final class LogListenerFactoryTest extends TestCase
         $this->expectExceptionCode(1);
         $this->expectExceptionMessage('assert($logger instanceof LoggerInterface)');
 
-        ($this->object)($container, '');
+        (new LogListenerFactory())($container, '');
     }
 }

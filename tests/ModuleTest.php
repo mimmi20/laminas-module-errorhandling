@@ -22,6 +22,7 @@ use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Mimmi20\ErrorHandling\LogListener;
 use Mimmi20\ErrorHandling\Module;
+use PHPUnit\Event\NoPreviousThrowableException;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -66,6 +67,7 @@ final class ModuleTest extends TestCase
     /**
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
+     * @throws Exception
      */
     public function testOnBootstrap(): void
     {
@@ -82,6 +84,7 @@ final class ModuleTest extends TestCase
     /**
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
+     * @throws Exception
      */
     public function testOnBootstrap2(): void
     {
@@ -106,6 +109,7 @@ final class ModuleTest extends TestCase
     /**
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
+     * @throws Exception
      */
     public function testOnBootstrap3(): void
     {
@@ -139,6 +143,9 @@ final class ModuleTest extends TestCase
     /**
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
+     * @throws Exception
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testOnBootstrap4(): void
     {
@@ -175,6 +182,9 @@ final class ModuleTest extends TestCase
     /**
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
+     * @throws Exception
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testOnBootstrap5(): void
     {
@@ -221,6 +231,9 @@ final class ModuleTest extends TestCase
     /**
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
+     * @throws Exception
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testOnBootstrap6(): void
     {
