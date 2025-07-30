@@ -35,8 +35,6 @@ final class LogListener extends AbstractListenerAggregate
      * @param int $priority
      *
      * @throws void
-     *
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
     #[Override]
     public function attach(EventManagerInterface $events, $priority = 1): void
